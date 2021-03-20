@@ -85,6 +85,39 @@ class EventoController extends Controller
         $evento = Evento::find($id);
         $evento ->delete();
 
-        return redirect()->route('evento.index');
+        return redirect()->route('eventos.index');
     }
 }
+
+    public function store(Request $request)
+    {
+        $evento = new Evento;
+
+        $evento->nome = $request->nome;
+        $evento->dtinicio = $request->dtinicio;
+        $evento->dtfim = $request->dtfim;
+        $evento->hrinicio = $request->hrinicio;
+        $evento->hrfim = $request->hrfim;
+        $evento->descricao = $request->descricao;
+        $evento->lembrete = $request->lembrete;
+        $evento->usuario = Auth::id();
+        $evento->save();
+
+        return redirect()->route('eventos.index');
+    }
+
+     public function update(Request $request, $id)
+    {
+        $evento = Evento::find($id);
+
+        $evento->nome = $request->nome;
+        $evento->dtinicio = $request->dtinicio;
+        $evento->dtfim = $request->dtfim;
+        $evento->hrinicio = $request->hrinicio;
+        $evento->hrfim = $request->hrfim;
+        $evento->descricao = $request->descricao;
+        $evento->lembrete = $request->lembrete;
+        $evento->save();
+
+        return redirect()->route('eventos.show', ['evento'=>$evento->id]);
+    }
