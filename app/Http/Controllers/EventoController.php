@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Evento;
+use Auth;
 
 class EventoController extends Controller
 {
@@ -13,8 +15,8 @@ class EventoController extends Controller
      */
     public function index()
     {
-        $evento = Evento::all();
-        return view('listar-evento', ['evento'=>$evento]);
+        $eventos = Evento::where('usuario', Auth::id())->get();
+        return view('listar-evento', ['eventos'=>$eventos]);
     }
 
     /**
@@ -35,7 +37,24 @@ class EventoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $evento = new Evento;
+
+        $evento->usuario = Auth::id();
+        $evento->nome = $request->nome;
+        $evento->dtinicio = $request->dtinicio;
+        $evento->dtfim = $request->dtfim;
+        $evento->hrinicio = $request->hrinicio;
+        $evento->hrfim = $request->hrfim;
+        $evento->descricao = $request->descricao;
+
+        if ($request->lembrete == 'true'){
+            $evento->lembrete = 1;
+        }
+
+        $evento->save();
+
+
+        return redirect()->route('eventos.index');
     }
 
     /**
@@ -71,7 +90,24 @@ class EventoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $evento = Evento::find($id);
+
+        $evento->nome = $request->nome;
+        $evento->dtinicio = $request->dtinicio;
+        $evento->dtfim = $request->dtfim;
+        $evento->hrinicio = $request->hrinicio;
+        $evento->hrfim = $request->hrfim;
+        $evento->descricao = $request->descricao;
+
+        if ($request->lembrete == 'true'){
+            $evento->lembrete = 1;
+        } else {
+            $evento->lembrete = 0;
+        }
+
+        $evento->save();
+
+        return redirect()->route('eventos.show', ['evento'=>$evento->id]);
     }
 
     /**
@@ -85,6 +121,6 @@ class EventoController extends Controller
         $evento = Evento::find($id);
         $evento ->delete();
 
-        return redirect()->route('evento.index');
+        return redirect()->route('eventos.index');
     }
 }

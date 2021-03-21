@@ -48,4 +48,46 @@ class RegisteredUserController extends Controller
 
         return redirect(RouteServiceProvider::HOME);
     }
+
+    public function edit($id) {
+        $usuario = Auth::user();
+        return view('editar-conta', ['user'=>$usuario]);
+    }
+
+    public function update($id, Request $request) {
+        $usuario = Auth::user();
+
+        $usuario->name  = $request->name;
+        $usuario->email = $request->email;
+        $usuario->save();
+
+        return redirect()->route('users.edit', ['user'=>Auth::id()])->with('msg', 'Alterações realizadas com sucesso');
+    }
+
+    public function destroy($id){
+        $usuario = User::find(Auth::id());
+
+        Auth::logout();
+
+        $usuario->delete();
+        return redirect()->route('home');
+    }
+
+    public function editPassword($id) {
+        $user = Auth::user();
+        return view('alterar-senha', ['user'=>$user]);
+    }
+
+    public function updatePassword($id, Request $request) {
+        $user = Auth::user();
+
+        if ($request->password == $request->password_confirmation) {
+            $user->password = Hash::make($request->password);
+            $user->save();
+
+            return redirect()->route('users.edit', ['user'=>Auth::id()])->with('msg', 'Senha alterada com sucesso');
+        } else {
+            return redirect()->route('users.edit-password', ['user'=>Auth::id()])->with('msg', 'As senhas que você digitou eram diferentes');
+        }
+    }
 }

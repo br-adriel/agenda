@@ -17,6 +17,26 @@ Route::get('/register', [RegisteredUserController::class, 'create'])
 Route::post('/register', [RegisteredUserController::class, 'store'])
                 ->middleware('guest');
 
+Route::get('/users/{user}/edit', [RegisteredUserController::class, 'edit'])
+                ->middleware('password.confirm')
+                ->name('users.edit');
+
+Route::put('/users/{user}', [RegisteredUserController::class, 'update'])
+                ->middleware('password.confirm')
+                ->name('users.update');
+
+Route::delete('/users/{user}', [RegisteredUserController::class, 'destroy'])
+                ->middleware('password.confirm')
+                ->name('users.destroy');
+
+Route::get('/users/{user}/edit/password', [RegisteredUserController::class, 'editPassword'])
+                ->middleware('password.confirm')
+                ->name('users.edit-password');
+
+Route::put('/users/{user}/password', [RegisteredUserController::class, 'updatePassword'])
+                ->middleware('password.confirm')
+                ->name('users.update-password');
+
 Route::get('/login', [AuthenticatedSessionController::class, 'create'])
                 ->middleware('guest')
                 ->name('login');

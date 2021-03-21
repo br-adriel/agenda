@@ -9,7 +9,7 @@
 		<link href="{{asset('css/styles.css') }}" rel="stylesheet" />
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
 	</head>
-	<body class="bg-primary">
+	<body style="background-color: #054F77;">
 		<div id="layoutAuthentication">
 			<div id="layoutAuthentication_content">
 				<main class="mb-5">
@@ -55,7 +55,7 @@
 												</div>
 											</div>
 											<div class="form-group mt-4 mb-0">
-												<button class="btn btn-primary btn-block" type="submit">Criar Conta</button>
+												<button class="btn btn-primary btn-block" type="submit" style="background-color: #054F77;">Criar Conta</button>
 											</div>
 										</form>
 									</div>
