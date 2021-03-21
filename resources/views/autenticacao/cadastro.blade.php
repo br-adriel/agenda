@@ -4,8 +4,11 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 		<meta name="description" content="" />
-		<meta name="author" content="" />
+		<meta name="author" content="Equipe Agenda" />
+		<meta name="theme-color" content="#054F77">
+
 		<title>Criar uma conta | Agenda</title>
+
 		<link href="{{asset('css/styles.css') }}" rel="stylesheet" />
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
 	</head>
