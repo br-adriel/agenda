@@ -37,13 +37,9 @@
 							Lista de eventos
 						</a>
 						<div class="sb-sidenav-menu-heading">Usuário</div>
-						<a class="nav-link" href="#">
+						<a class="nav-link" href="{{ route('users.edit', ['user'=>Auth::id()]) }}">
 							<div class="sb-nav-link-icon"><i class="fas fa-user-edit"></i></div>
 							Editar perfil
-						</a>
-						<a class="nav-link">
-							<div class="sb-nav-link-icon"><i class="fas fa-user-alt-slash"></i></div>
-							Excluir conta
 						</a>
 
 						<div class="sb-sidenav-menu-heading"></div>
