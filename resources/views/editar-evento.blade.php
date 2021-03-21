@@ -35,28 +35,28 @@
 						<div class="form-row">
 							<div class="col-md-6">
 								<label> Data de início do evento:</label>
-								<input type="date" class="form-control" name="dtinicio" value="2021-03-15" required>
+								<input type="date" class="form-control" name="dtinicio" value="{{ $evento->dtinicio }}" required>
 							</div>
 							<div class="col-md-6">
 								<label>Data de término do evento:</label>
-								<input type="date" class="form-control" name="dtfim" value="2021-03-15" required>
+								<input type="date" class="form-control" name="dtfim" value="{{ $evento-dtfim }}" required>
 							</div>
 						</div>
 						<br>
 						<div class="form-row">
 							<div class="col-md-6">
 								<label>Horário de início do evento:</label>
-								<input type="time" class="form-control" name="hrinicio" value="08:00" required>
+								<input type="time" class="form-control" name="hrinicio" value="{{ $evento->hrinicio}}" required>
 							</div>
 							<div class="col-md-6">
 								<label>Horário de término do evento:</label>
-								<input type="time" class="form-control" name="hrfim" value="10:30" required>
+								<input type="time" class="form-control" name="hrfim" value="{{ $evento->hrfim }}" required>
 							</div>
 						</div>
 						<br>
 						<div class="form-group form-user">
 							<label>Descrição:</label>
-							<input type="text" class="form-control" name="descricao" value="O evento ocorrerá pelo Meet e se trata de uma aula que a maioria não presta atenção.">
+							<input type="text" class="form-control" name="descricao" value="{{ $evento->descricao }}">
 						</div>
 						<div>
 							<label>Deseja ser lembrado deste evento?</label> <br>

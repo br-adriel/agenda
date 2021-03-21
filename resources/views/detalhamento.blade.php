@@ -21,11 +21,11 @@
 						<div class="form-row">
 							<div class="col-md-6">
 								<label>Data de início do evento:</label>
-								<input type="text" class="form-control" value="{{ $evento->dtinicio }}" readonly>
+								<input type="text" class="form-control" value="{{ \Carbon\Carbon::parse($evento->dtinicio)->format('d/m/Y')}}" readonly>
 							</div>
 							<div class="col-md-6">
 								<label>Data de término do evento:</label>
-								<input type="text" class="form-control" value="{{ $evento->dtfim }}" readonly>
+								<input type="text" class="form-control" value="{{ \Carbon\Carbon::parse($evento->dtfim)->format('d/m/Y')}}" readonly>
 							</div>
 						</div>
 						<br>
