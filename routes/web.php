@@ -17,9 +17,9 @@ use App\Models\Evento;
 
 Route::get('/', function () {
     return view('home');
-})->name('home');
+})->middleware(['auth'])->name('home');
 
-Route::resource('eventos', EventoController::class);
+Route::resource('eventos', EventoController::class)->middleware(['auth']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

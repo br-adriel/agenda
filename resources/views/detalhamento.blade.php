@@ -1,6 +1,6 @@
 @extends('layouts.base')
 
-@section('titulo', 'Perfil do evento')
+@section('titulo', 'Ver evento')
 
 
 @section('conteudo')
@@ -16,48 +16,45 @@
 					<form>
 						<div class="form-group">
 							<label>Nome do evento: </label>
-							<input type="text" class="form-control" name="nome" value="Aula de Iuri" readonly>
+							<input type="text" class="form-control" value="{{ $evento->nome }}" readonly>
 						</div>
 						<div class="form-row">
 							<div class="col-md-6">
-								<label> Data de início do evento:</label>
-								<input type="text" class="form-control" name="dtinicio" value="15/03/2021" readonly>
+								<label>Data de início do evento:</label>
+								<input type="text" class="form-control" value="{{ $evento->dtinicio }}" readonly>
 							</div>
 							<div class="col-md-6">
 								<label>Data de término do evento:</label>
-								<input type="text" class="form-control" name="dtfim" value="15/03/2021" readonly>
+								<input type="text" class="form-control" value="{{ $evento->dtfim }}" readonly>
 							</div>
 						</div>
 						<br>
 						<div class="form-row">
 							<div class="col-md-6">
 								<label>Horário de início do evento:</label>
-								<input type="text" class="form-control" name="hrinicio" value="08:00" readonly>
+								<input class="form-control" type="time" readonly value="{{ $evento->hrinicio }}">
 							</div>
 							<div class="col-md-6">
 								<label>Horário de término do evento:</label>
-								<input type="text" class="form-control" name="hrfim" value="10:30" readonly>
+								<input class="form-control" type="time" value="{{ $evento->hrfim }}" readonly>
 							</div>
 						</div>
 						<br>
 						<div class="form-group form-user">
 							<label>Descrição:</label>
-							<input type="text" class="form-control" name="descricao" value="O evento ocorrerá pelo Meet e se trata de uma aula que a maioria não presta atenção."  readonly>
+							<input class="form-control" type="textarea" value="{{ $evento->descricao }}" readonly>
 						</div>
 						<div>
 							<label>Deseja ser lembrado deste evento?</label> <br>
-							<div class="form-check form-check-inline">
-								<input class="form-check-input" type="radio" id="inlineRadio1" value="true" readonly checked>
-								<label class="form-check-label" for="inlineRadio1"> Sim </label>
-							</div>
-							<div class="form-check form-check-inline">
-								<input class="form-check-input" type="radio" id="inlineRadio2" value="false" readonly>
-								<label class="form-check-label" for="inlineRadio2"> Não </label>
-							</div>
+							@if ($evento->lembrete == 1)
+							<label>Sim</label>
+							@else
+							<label>Não</label>
+							@endif
 						</div>
 						<div style="text-align: right;">
-							<button type="button" class="btn btn-primary"> Editar </button>
-							<button type="button" class="btn btn-secondary"> Voltar </button>
+							<a href="{{ route('eventos.edit', ['evento'=>$evento->id]) }}" class="btn btn-primary">Editar</a>
+							<a href="{{ route('eventos.index') }}" class="btn btn-secondary">Voltar</a>
 						</div>
 					</form>
 				</div>

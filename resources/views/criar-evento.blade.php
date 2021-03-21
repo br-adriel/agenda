@@ -18,7 +18,7 @@
 
 						<div class="form-group">
 							<label>Nome do evento: </label>
-							<input type="text" class="form-control" name="nome" placeholder="Ex.: José da Silva Vieira." required>
+							<input type="text" class="form-control" name="nome" placeholder="Ex.: Festa de aniversário." required>
 						</div>
 						<div class="form-row">
 							<div class="col-md-6">
@@ -44,7 +44,7 @@
 						<br>
 						<div class="form-group form-user">
 							<label>Descrição:</label>
-							<input type="text" class="form-control" name="descricao" placeholder="Ex.: O evento ocorrerá na casa da Maria e se trata de um encontro de amigos.">
+							<input type="text" class="form-control" name="descricao" placeholder="Ex.: O evento ocorrerá na casa da Maria e se trata de um encontro de amigos." required>
 						</div>
 						<div>
 							<label>Deseja ser lembrado deste evento?</label> <br>
@@ -53,14 +53,14 @@
 								<label class="form-check-label" for="inlineRadio1"> Sim </label>
 							</div>
 							<div class="form-check form-check-inline">
-								<input class="form-check-input" name="lembrete" type="radio" id="inlineRadio2" value="false">
+								<input class="form-check-input" name="lembrete" type="radio" id="inlineRadio2" value="false" checked>
 								<label class="form-check-label" for="inlineRadio2"> Não </label>
 							</div>
 						</div>
 						<div style="text-align: right;">
 							<input type="submit" class="btn btn-primary" value="Salvar">
 
-							<button type="button" class="btn btn-secondary"> Cancelar </button>
+							<a href="{{ route('home') }}" class="btn btn-secondary">Cancelar</a>
 						</div>
 					</form>
 				</div>

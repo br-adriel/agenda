@@ -17,7 +17,7 @@
 
 <body class="sb-nav-fixed">
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-		<a class="navbar-brand" href="{{ route('principal') }}">Agenda</a>
+		<a class="navbar-brand" href="{{ route('home') }}">Agenda</a>
 		<button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#">
 			<i class="fas fa-bars"></i>
 		</button>
@@ -28,16 +28,16 @@
 				<div class="sb-sidenav-menu">
 					<div class="nav">
 						<div class="sb-sidenav-menu-heading">Eventos</div>
-						<a class="nav-link" href="{{ route('criar-evento') }}">
+						<a class="nav-link" href="{{ route('eventos.create') }}">
 							<div class="sb-nav-link-icon"><i class="fas fa-plus"></i></div>
 							Criar evento
 						</a>
-						<a class="nav-link" href="{{ route('listar-evento') }}">
+						<a class="nav-link" href="{{ route('eventos.index') }}">
 							<div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
 							Lista de eventos
 						</a>
 						<div class="sb-sidenav-menu-heading">Usuário</div>
-						<a class="nav-link" href="{{ route('editar-conta') }}">
+						<a class="nav-link" href="#">
 							<div class="sb-nav-link-icon"><i class="fas fa-user-edit"></i></div>
 							Editar perfil
 						</a>
@@ -47,15 +47,22 @@
 						</a>
 
 						<div class="sb-sidenav-menu-heading"></div>
-						<a class="nav-link" href="{{ route('home') }}">
-							<i class="fas fa-sign-out-alt"></i>
+						<a class="nav-link" href="{{ route('logout') }}"
+							onclick="document.getElementById('form-logout').submit(); return false">
+							<div class="sb-sidenav-link-icon">
+								<i class="fas fa-sign-out-alt"></i>
+							</div>
 							Sair
 						</a>
+
+						<form method="POST" action="{{ route('logout') }}" id="form-logout">
+                            @csrf
+                        </form>
 					</div>
 				</div>
 				<div class="sb-sidenav-footer">
 					<div class="small">Logado como:</div>
-					Ninguém
+					{{ Auth::user()->name }}
 				</div>
 			</nav>
 		</div>
@@ -70,11 +77,6 @@
 				<div class="container-fluid">
 					<div class="d-flex align-items-center justify-content-between small">
 						<div class="text-muted">Copyright &copy; Agenda 2021</div>
-						<div>
-							<a href="#">Política de privacidade</a>
-							&middot;
-							<a href="#">Termos &amp; Condições</a>
-						</div>
 					</div>
 				</div>
 			</footer>

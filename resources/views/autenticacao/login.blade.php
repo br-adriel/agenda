@@ -9,7 +9,7 @@
 		<link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
 	</head>
-	<body class="bg-primary">
+	<body style="background-color: #054F77;">
 		<div id="layoutAuthentication">
 			<div id="layoutAuthentication_content">
 				<main class="mb-5">
@@ -44,7 +44,7 @@
 											</div>
 											<div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
 												<a class="small" href="#">Esqueceu a senha?</a>
-												<button type="submit" class="btn btn-primary">Entrar</button>
+												<button type="submit" class="btn btn-primary" style="background-color: #054F77;">Entrar</button>
 											</div>
 										</form>
 									</div>

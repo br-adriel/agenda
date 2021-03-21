@@ -24,13 +24,13 @@
 				</header>
 
 				<div class="w3-container">
-					<form method="POST" action="{{ route('eventos.update')}}">
+					<form method="POST" action="{{ route('eventos.update', ['evento'=>$evento])}}">
 						@method('PUT')
 						@csrf
 
 						<div class="form-group">
 							<label>Nome do evento: </label>
-							<input type="text" class="form-control" name="nome" value="Aula de Iuri" required>
+							<input type="text" class="form-control" name="nome" value="{{ $evento->nome }}" required>
 						</div>
 						<div class="form-row">
 							<div class="col-md-6">
@@ -60,14 +60,25 @@
 						</div>
 						<div>
 							<label>Deseja ser lembrado deste evento?</label> <br>
+							@if ($evento->lembrete == 0)
 							<div class="form-check form-check-inline">
-								<input class="form-check-input" name="lembrete" type="radio" id="inlineRadio1" value="true" checked>
-								<label class="form-check-label" for="inlineRadio1"> Sim </label>
+								<input class="form-check-input" name="lembrete" type="radio" id="inlineRadio1" value="true">
+								<label class="form-check-label" for="inlineRadio1">Sim</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" name="lembrete" type="radio" id="inlineRadio2" value="false" checked>
+								<label class="form-check-label" for="inlineRadio2">Não</label>
+							</div>
+							@else
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" name="lembrete" type="radio" id="inlineRadio1" value="true" checked="">
+								<label class="form-check-label" for="inlineRadio1">Sim</label>
 							</div>
 							<div class="form-check form-check-inline">
 								<input class="form-check-input" name="lembrete" type="radio" id="inlineRadio2" value="false">
-								<label class="form-check-label" for="inlineRadio2"> Não </label>
+								<label class="form-check-label" for="inlineRadio2">Não</label>
 							</div>
+							@endif
 						</div>
 						<div style="text-align: right;">
 							<input type="submit" class="btn btn-primary" value="Salvar">
