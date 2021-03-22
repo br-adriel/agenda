@@ -22,9 +22,9 @@
                                     <img class="mb-4 img-error" src="{{ asset('assets/img/error-404-monochrome.svg') }}" />
                                     <p class="lead">Página não encontrada</p>
                                     <h2>{{ $exception->getMessage() }}</h2>
-                                    <a href="{{ url()->previous() }}">
+                                    <a href="{{ route('home') }}">
                                         <i class="fas fa-arrow-left mr-1"></i>
-                                        Voltar a página anterior
+                                        Ir para a página inicial
                                     </a>
                                 </div>
                             </div>
