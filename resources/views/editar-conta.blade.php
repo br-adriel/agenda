@@ -59,7 +59,8 @@
 		      </div>
 
 		      <form method="post" action="{{ route('users.destroy', ['user'=>$user->id]) }}" id="form-apagar-conta">
-		      	@method('DELETE') @csrf
+		      	@csrf
+		      	@method('DELETE')
 		      </form>
 		    </div>
 		  </div>
