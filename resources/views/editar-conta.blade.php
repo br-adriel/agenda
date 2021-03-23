@@ -29,8 +29,12 @@
 							<label>Email:</label>
 							<input type="email" class="form-control" name="email" value="{{ $user->email }}" required>
 						</div>
-						<a href="{{ route('users.edit-password', ['user'=>$user->id]) }}">Alterar senha</a><br>
-						<a href="#exampleModal" data-toggle="modal" data-target="#exampleModal">Excluir conta</a>
+						<div class="form-group">
+							<a href="{{ route('users.edit-password', ['user'=>$user->id]) }}"class="btn btn-primary"> Alterar senha</a><br>
+						</div>
+						<div class="form-group">
+							<a href="#exampleModal" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary">Excluir conta</a>
+						</div>
 						<br>
 						<div class="text-right">
 							<button type="submit" class="btn btn-primary">Salvar</button>

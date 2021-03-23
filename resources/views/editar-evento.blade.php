@@ -83,7 +83,7 @@
 						<div style="text-align: right;">
 							<input type="submit" class="btn btn-primary" value="Salvar">
 
-							<button type="button" class="btn btn-secondary"> Cancelar </button>
+							<a type="button" class="btn btn-secondary" href="{{ route('eventos.index') }}"> Cancelar </a>
 						</div>
 					</form>
 				</div>
