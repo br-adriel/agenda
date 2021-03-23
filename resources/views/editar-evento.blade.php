@@ -39,7 +39,7 @@
 							</div>
 							<div class="col-md-6">
 								<label>Data de término do evento:</label>
-								<input type="date" class="form-control" name="dtfim" value="{{ $evento-dtfim }}" required>
+								<input type="date" class="form-control" name="dtfim" value="{{ $evento->dtfim }}" required>
 							</div>
 						</div>
 						<br>
