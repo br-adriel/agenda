@@ -66,7 +66,7 @@ class EventoController extends Controller
      */
     public function show($id)
     {
-        $evento = Evento::find($id);
+        $evento = Evento::findOrFail($id);
 
         if (Gate::allows('possui-evento', $evento, Auth::user())) {
             return view('detalhamento', ['evento'=>$evento]);
@@ -83,7 +83,7 @@ class EventoController extends Controller
      */
     public function edit($id)
     {
-        $evento = Evento::find($id);
+        $evento = Evento::findOrFail($id);
 
         if (Gate::allows('possui-evento', $evento, Auth::user())) {
             return view('editar-evento', ['evento'=>$evento]);
@@ -101,7 +101,7 @@ class EventoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $evento = Evento::find($id);
+        $evento = Evento::findOrFail($id);
 
         if (Gate::allows('possui-evento', $evento, Auth::user())) {
             $evento->nome = $request->nome;
@@ -133,7 +133,7 @@ class EventoController extends Controller
      */
     public function destroy($id)
     {
-        $evento = Evento::find($id);
+        $evento = Evento::findOrFail($id);
 
         if (Gate::allows('possui-evento', $evento, Auth::user())) {
             $evento ->delete();
