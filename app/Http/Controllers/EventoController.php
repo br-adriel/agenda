@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Evento;
 use Auth;
+use App\Models\Evento;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class EventoController extends Controller
 {
@@ -65,8 +66,13 @@ class EventoController extends Controller
      */
     public function show($id)
     {
-        $evento = Evento::find($id);
-        return view('detalhamento', ['evento'=>$evento]);
+        $evento = Evento::findOrFail($id);
+
+        if (Gate::allows('possui-evento', $evento, Auth::user())) {
+            return view('detalhamento', ['evento'=>$evento]);
+        } else {
+            return redirect()->back();
+        }
     }
 
     /**
@@ -77,8 +83,13 @@ class EventoController extends Controller
      */
     public function edit($id)
     {
-        $evento = Evento::find($id);
-        return view('editar-evento', ['evento'=>$evento]);
+        $evento = Evento::findOrFail($id);
+
+        if (Gate::allows('possui-evento', $evento, Auth::user())) {
+            return view('editar-evento', ['evento'=>$evento]);
+        } else {
+            return redirect()->back();
+        }
     }
 
     /**
@@ -90,24 +101,28 @@ class EventoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $evento = Evento::find($id);
+        $evento = Evento::findOrFail($id);
 
-        $evento->nome = $request->nome;
-        $evento->dtinicio = $request->dtinicio;
-        $evento->dtfim = $request->dtfim;
-        $evento->hrinicio = $request->hrinicio;
-        $evento->hrfim = $request->hrfim;
-        $evento->descricao = $request->descricao;
+        if (Gate::allows('possui-evento', $evento, Auth::user())) {
+            $evento->nome = $request->nome;
+            $evento->dtinicio = $request->dtinicio;
+            $evento->dtfim = $request->dtfim;
+            $evento->hrinicio = $request->hrinicio;
+            $evento->hrfim = $request->hrfim;
+            $evento->descricao = $request->descricao;
 
-        if ($request->lembrete == 'true'){
-            $evento->lembrete = 1;
+            if ($request->lembrete == 'true'){
+                $evento->lembrete = 1;
+            } else {
+                $evento->lembrete = 0;
+            }
+
+            $evento->save();
+
+             return redirect()->route('eventos.show', ['evento'=>$evento->id]);
         } else {
-            $evento->lembrete = 0;
+            return redirect()->back();
         }
-
-        $evento->save();
-
-        return redirect()->route('eventos.show', ['evento'=>$evento->id]);
     }
 
     /**
@@ -118,9 +133,13 @@ class EventoController extends Controller
      */
     public function destroy($id)
     {
-        $evento = Evento::find($id);
-        $evento ->delete();
+        $evento = Evento::findOrFail($id);
 
-        return redirect()->route('eventos.index');
+        if (Gate::allows('possui-evento', $evento, Auth::user())) {
+            $evento ->delete();
+            return redirect()->route('eventos.index');
+        } else {
+            return redirect()->back();
+        }
     }
 }
