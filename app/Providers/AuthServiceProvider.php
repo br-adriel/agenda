@@ -31,5 +31,9 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('possui-evento', function(User $usuario, Evento $evento) {
             return $usuario->id === $evento->usuario;
         });
+
+        Gate::define('identidade', function(User $usuario, User $usuario2) {
+            return $usuario->id === $usuario2->id;
+        });
     }
 }
