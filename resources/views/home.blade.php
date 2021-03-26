@@ -40,9 +40,9 @@
 		</div>
 	</div>
 
-	@if ($conflito->count() > 0)
+
 	<div class="col-md-6 py-3">
-		<div class="card shadow-sm">
+		<div class="card shadow-sm mb-3">
 			<div class="card-header">Eventos conflitantes</div>
 			<div class="card-body px-0 py-1">
 				<ul class="list-group list-group-flush">
@@ -51,9 +51,7 @@
 				</ul>
 			</div>
 		</div>
-	</div>
-	@endif
-	<div class="col-md-6 py-3">
+
 		<div class="card shadow-sm">
 			<div class="card-header">Eventos da semana</div>
 			<div class="card-body px-0 py-1">
