@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventoController;
+use App\Http\Controllers\HomeController;
 use App\Models\Evento;
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +16,7 @@ use App\Models\Evento;
 */
 
 
-Route::get('/', function () {
-    return view('home');
-})->middleware(['auth'])->name('home');
+Route::get('/', [HomeController::class, 'home'])->middleware(['auth'])->name('home');
 
 Route::resource('eventos', EventoController::class)->middleware(['auth']);
 

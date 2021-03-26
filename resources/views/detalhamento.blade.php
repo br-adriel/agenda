@@ -54,7 +54,6 @@
 						</div>
 						<div style="text-align: right;">
 							<a href="{{ route('eventos.edit', ['evento'=>$evento->id]) }}" class="btn btn-primary">Editar</a>
-							<a href="{{ route('eventos.index') }}" class="btn btn-secondary">Voltar</a>
 						</div>
 					</form>
 				</div>
