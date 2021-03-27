@@ -52,12 +52,43 @@
 							<label>Não</label>
 							@endif
 						</div>
-						<div style="text-align: right;">
-							<a href="{{ route('eventos.edit', ['evento'=>$evento->id]) }}" class="btn btn-primary">Editar</a>
+						<br>
+						<div class="form-group row">
+							<div class="col-md-6 text-left">
+								<a href="#exampleModal" data-toggle="modal" data-target="#exampleModal" class="btn btn-outline-danger">Excluir evento</a>
+							</div>
+							<div class="col-md-6" style="text-align: right;">
+								<a href="{{ route('eventos.edit', ['evento'=>$evento->id]) }}" class="btn btn-primary">Editar</a>
+								<a href="{{ route('eventos.index') }}" class="btn btn-secondary">Voltar</a>
+							</div>
 						</div>
 					</form>
 				</div>
 			</div>
+		</div>
+		<div class="modal" tabindex="-1" role="dialog" id="exampleModal">
+		  <div class="modal-dialog modal-dialog-centered" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title">Excluir evento</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+		        <p>Tem certeza que você quer excluir esse evento? Essa ação não é reversível.</p>
+		      </div>
+		      <div class="modal-footer">
+		        <a type="button" class="btn btn-danger" onclick="document.getElementById('form-excluir-{{ $evento->id }}').submit();return false">Excluir evento</a>
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+		      </div>
+
+		      <form method="post" action="{{ route('eventos.destroy', ['evento'=>$evento->id]) }}" id="form-excluir-{{ $evento->id }}">
+		      	@csrf
+		      	@method('DELETE')
+		      </form>
+		    </div>
+		  </div>
 		</div>
 	</div>
 </div>
