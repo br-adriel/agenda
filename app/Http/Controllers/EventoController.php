@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\Models\Evento;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
@@ -16,7 +17,8 @@ class EventoController extends Controller
      */
     public function index()
     {
-        $eventos = Evento::where('usuario', Auth::id())->get();
+        $eventos = Evento::where('usuario', Auth::id())
+                            ->whereDate('dtfim', '>=', Carbon::now())->get();
         return view('listar-evento', ['eventos'=>$eventos]);
     }
 
