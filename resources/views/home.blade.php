@@ -41,16 +41,21 @@
 	</div>
 
 
-	<div class="col-md-6 py-3">
-		<div class="card shadow-sm mb-3">
-			<div class="card-header">Eventos conflitantes</div>
-			<div class="card-body px-0 py-1">
-				<ul class="list-group list-group-flush">
-					<li class="list-group-item">Festa de aniversário</li>
-					<li class="list-group-item">Festa de aniversário</li>
-				</ul>
+	<div class="col-md-6 py-md-3 pb-3">
+		@if (count($conflitos) > 0)
+			<div class="card shadow-sm mb-3 warning">
+				<div class="card-header">Eventos conflitantes</div>
+				<div class="card-body px-0 py-1">
+					<ul class="list-group list-group-flush">
+						@foreach($conflitos as $conflito)
+							<li class="list-group-item">
+								"{{ $conflito[0]->nome }}" e "{{ $conflito[1]->nome }}"
+							</li>
+						@endforeach
+					</ul>
+				</div>
 			</div>
-		</div>
+		@endif
 
 		<div class="card shadow-sm">
 			<div class="card-header">Eventos da semana</div>
