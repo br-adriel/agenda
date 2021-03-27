@@ -33,7 +33,7 @@
 						</div>
 						@endforeach
 					@else
-						<h3>Não eventos para hoje</h3>
+						<h3>Não há eventos para hoje</h3>
 					@endif
 				</div>
 			</div>
